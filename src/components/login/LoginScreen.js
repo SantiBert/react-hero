@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContex } from '../../auth/AuthContext'
+import { types } from '../../types/types';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginScreen = () => {
 
+  const navigate = useNavigate();
+
+  const { dispatch } = useContext(AuthContex);
+
   const handleLogin = () =>{
-    console.log('click')
+    dispatch({
+      type:types.login,
+      payload:{
+        name:'Santiago'
+      }
+    });
+    navigate("/");
   }
 
   return (
